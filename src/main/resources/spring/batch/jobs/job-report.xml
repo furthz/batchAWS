@@ -15,8 +15,25 @@
 		</batch:step>
 	</batch:job>
 	
+	<batch:job id="ingestaUpdateJob">
+		<batch:step id="step2">
+			<batch:tasklet ref="updateTasklet"/>
+		</batch:step>
+	</batch:job>
+	
+	<batch:job id="ingestaRedisJob">
+		<batch:step id="step3">
+			<batch:tasklet ref="ingestaRedisTasklet"/>
+		</batch:step>
+	</batch:job>
+	
 	<!-- Bean -->
 	<bean id="ingestaHistoricoTasklet" class="pe.soapros.tasklet.IngestaHistoricoTasklet"/>
+	
+	<bean id="updateTasklet" class="pe.soapros.tasklet.UpdateTasklet"/>
+	
+	<bean id="ingestaRedisTasklet" class="pe.soapros.tasklet.IngestaRedisTasklet"/>
+	
 	
 	
 	

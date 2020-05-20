@@ -15,6 +15,7 @@ import com.amazonaws.SdkClientException;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 
+import pe.soapros.bean.Contrato;
 import pe.soapros.bean.Email;
 import pe.soapros.bean.EmailMetadata;
 import pe.soapros.bean.Producto;
@@ -32,6 +33,23 @@ public class InformeUtil {
 	private static final String CODING = "Utf8";
 
 	private static final String DEFAULT = "none";
+	
+	public static Contrato loadLineContrato(final String line)throws Exception {
+		Contrato cont = new Contrato();
+		
+		String[] elementos = line.split(";");
+		
+		if (elementos.length < 4) {
+			throw new Exception("No tienen todos los datos esperados");
+		}else {
+			cont.setPan(elementos[0]);
+			cont.setFec_corte(elementos[1]);
+			cont.setId(elementos[2]);
+			cont.setContrato("bn_ripley_" + elementos[3]);
+		}
+		
+		return cont;
+	}
 
 	public static List<Reporte> loadReport(final S3ObjectInputStream inputStream) throws Exception {
 		log.debug("Cargar el archivo de metadata");

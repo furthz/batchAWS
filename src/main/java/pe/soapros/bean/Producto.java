@@ -636,7 +636,7 @@ public class Producto implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Producto [id=" + id + ", periodo=" + periodo +  "]";
+		return this.metadata.getNumeroDNICliente() + "|" + this.metadata.getTarjetaCreditoCliente() + "|" + periodo.toString();
 	}
 
 	

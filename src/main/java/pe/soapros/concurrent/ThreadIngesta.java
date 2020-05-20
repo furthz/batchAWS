@@ -63,13 +63,14 @@ public class ThreadIngesta implements Runnable {
 
 			String corte = prefix.substring(prefix.length() - 3, prefix.length() - 1);
 
-			String prexPDF = "";
-
+			String prexPDF = prefix;
+			
+			/*
 			if (this.isFisico) {
 				prexPDF = prex + "FISICO/" + corte + "/";
 			} else {
 				prexPDF = prex + "VIRTUAL/" + corte + "/";
-			}
+			}*/
 
 			final AmazonS3 s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.US_EAST_1).build();
 

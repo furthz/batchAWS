@@ -60,7 +60,7 @@ public class IngestaImpl implements Ingesta {
 				log.info("Cantidad de archivos por procesar: " + objects.size());				
 				
 		        for (S3ObjectSummary os : objects) {
-		        	if(os.getKey().endsWith(".txt")) {
+		        	if(os.getKey().endsWith(".txt2")) {
 		        		System.out.println("* " + os.getKey());
 		        		lstMetadata.add(os);
 		        	}
